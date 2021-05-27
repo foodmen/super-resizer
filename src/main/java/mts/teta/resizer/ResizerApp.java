@@ -21,13 +21,13 @@ public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
     public Integer call() throws IOException {
 
 
-        /*System.out.println("reszie - " + resize[0] + ", " + resize[1]);
-        System.out.println("crop - " + crop[0] + ", " + crop[1]  + ", " +  crop[2] + ", " + crop[3]);
+        System.out.println("reszie - " + resize.width + ", " + resize.height);
+        System.out.println("crop - " + crop.width + ", " + crop.height  + ", " + crop.x + ", " + crop.y);
         System.out.println("format - " + format);
-        System.out.println("qualityValue - " + qualityValue);
-        System.out.println("blurRadius - " + blurRadius);
-        System.out.println("inputName - " + inputName);
-        System.out.println("outputName - " + outputName);*/
+        System.out.println("qualityValue - " + quality);
+        System.out.println("blurRadius - " + blur);
+        System.out.println("inputName - " + inputFile);
+        System.out.println("outputName - " + outputName);
 
         ImageProcessor imageProcessor = new ImageProcessor();
         imageProcessor.processImage(ImageIO.read(inputFile), this);
