@@ -18,10 +18,8 @@ public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
     }
 
     @Override
-    public Integer call() {
-        CreateImage image = new CreateImage(inputFile, resize[0],
-                resize[1], qualityValue, format);
-        image.resize(outputName);
+    public Integer call() throws IOException {
+
 
         /*System.out.println("reszie - " + resize[0] + ", " + resize[1]);
         System.out.println("crop - " + crop[0] + ", " + crop[1]  + ", " +  crop[2] + ", " + crop[3]);
@@ -31,8 +29,8 @@ public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
         System.out.println("inputName - " + inputName);
         System.out.println("outputName - " + outputName);*/
 
-        /*ImageProcessor imageProcessor = new ImageProcessor();
-        imageProcessor.processImage(ImageIO.read(inputFile), this);*/
+        ImageProcessor imageProcessor = new ImageProcessor();
+        imageProcessor.processImage(ImageIO.read(inputFile), this);
         return 0;
     }
 }

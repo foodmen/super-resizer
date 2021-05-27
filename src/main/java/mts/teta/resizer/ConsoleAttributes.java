@@ -30,7 +30,7 @@ class ConsoleAttributes{
     int[] resize = {-1, -1};
 
     @Option(names = "--quality", description = "JPEG/PNG compression level", paramLabel = "value")
-    int qualityValue = 100;
+    double quality = 100;
 
     @Option(names = "--crop", paramLabel = "width height x y", arity = "1..*",
             description = "\u001B[31mcut\u001B[0m out one rectangular area of the image")
