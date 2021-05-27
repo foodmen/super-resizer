@@ -1,51 +1,51 @@
 package mts.teta.resizer;
 
 import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Locale;
 
 public class CreateImage {
 
-    String inputName;
-    String outputName;
+    int height;
+    int width;
+    double quality;
+    String format;
+    BufferedImage image;
+    BufferedImage output;
 
-    public CreateImage(String inputName, String outputName) {
-        this.inputName = inputName;
-        this.outputName = outputName;
-    }
-
-    public boolean resize (int wight, int height) {
+    public CreateImage(File inputName, int height, int width,
+                       int qualityValue, String format) {
+        this.quality = qualityValue;
+        this.format = format.toLowerCase(Locale.ROOT);
         try {
-            Thumbnails.of(inputName)
-                    .size(wight, height)
-                    .toFile(outputName);
+            image = ImageIO.read(inputName);
         } catch (IOException e) {
-            System.out.println("Не удалось создать файл" + e.getMessage());
+            e.printStackTrace();
         }
-        return true;
+        this.width = (width == -1 ? image.getWidth() : width);
+        this.height = (height == -1 ? image.getHeight() : height);
+        //System.out.println(this.width + ". " + this.height);
     }
 
-    public boolean changeQuality (double quality) {
+    public BufferedImage resize (String outputName) {
         try {
-            Thumbnails.of(inputName)
+            Thumbnails.of(image)
+                    .size(width, height)
                     .outputQuality(quality / 100)
-                    .toFile(outputName);
-        } catch (IOException e) {
-            System.out.println("Не удалось создать файл" + e.getMessage());
-        }
-        return true;
-    }
-
-    public boolean outputFormat (String format) {
-        try {
-            Thumbnails.of(inputName)
                     .outputFormat(format)
                     .toFile(outputName);
         } catch (IOException e) {
-            System.out.println("Не удалось создать файл" + e.getMessage());
+            System.out.println("Не удалось создать файл " + e.getMessage());
         }
-        return true;
+        return output;
     }
+
 
 /*
     MarvinImage image = MarvinImageIO.loadImage(“test.jpg”);

@@ -1,8 +1,9 @@
 package mts.teta.resizer;
 
 import picocli.CommandLine;
-import picocli.CommandLine.Command;
 
+import javax.imageio.ImageIO;
+import java.io.IOException;
 import java.util.concurrent.Callable;
 
 public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
@@ -18,23 +19,18 @@ public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
 
     @Override
     public Integer call() {
-        CreateImage image = new CreateImage(inputName, outputName);
-        /*if (resize[0] != 0 && resize[1] != 0) {
-            image.resize(resize[0], resize[1]);
-        }
-        else if (qualityValue != 0) {
-            image.changeQuality(qualityValue);
-        }
-        else if (!format.isEmpty()) {
-            image.outputFormat(format);
-        }*/
-        System.out.println("reszie - " + resize[0] + ", " + resize[1]);
+        CreateImage image = new CreateImage(inputFile, resize[0],
+                resize[1], qualityValue, format);
+        image.resize(outputName);
+
+        /*System.out.println("reszie - " + resize[0] + ", " + resize[1]);
         System.out.println("crop - " + crop[0] + ", " + crop[1]  + ", " +  crop[2] + ", " + crop[3]);
         System.out.println("format - " + format);
         System.out.println("qualityValue - " + qualityValue);
         System.out.println("blurRadius - " + blurRadius);
         System.out.println("inputName - " + inputName);
-        System.out.println("outputName - " + outputName);
+        System.out.println("outputName - " + outputName);*/
+
         /*ImageProcessor imageProcessor = new ImageProcessor();
         imageProcessor.processImage(ImageIO.read(inputFile), this);*/
         return 0;
