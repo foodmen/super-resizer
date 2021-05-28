@@ -44,4 +44,4 @@ class ConsoleAttributes{
     String format = "JPEG";
 }
 
-// 1.jpg --resize 500 500 --quality 10 --format PNG --blur 20 --crop 10 20 30 40 2.jpg
+// 1.jpg --resize 500 500 --quality 10 --format PNG --blur 20 --crop 10 20 300 400 2.jpg
