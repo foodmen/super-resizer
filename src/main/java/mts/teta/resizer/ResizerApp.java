@@ -22,13 +22,22 @@ public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
     @Override
     public Integer call() throws BadAttributesException, IOException {
         ImageProcessor imageProcessor = new ImageProcessor();
-        parametrsValidator();
+        parametersValidator();
         imageProcessor.processImage(ImageIO.read(inputFile), this);
         return 0;
     }
 
-    private void parametrsValidator() throws BadAttributesException {
-        if (quality < 0 || quality > 100)
+    private void parametersValidator() throws BadAttributesException {
+        if (resize.isResize() && (resize.getHeight() < 1 || resize.getWidth() < 1))
+            throw new BadAttributesException("Please check params!");
+        if (quality < 1 || quality > 100)
+            throw new BadAttributesException("Please check params!");
+        if (crop.isCrop() && (crop.getX() < 0 || crop.getY() < 0 ||
+            crop.getHeight() < 1 || crop.getWidth() < 1))
+            throw new BadAttributesException("Please check params!");
+        if (blur < 0)
+            throw new BadAttributesException("Please check params!");
+        if (!format.equals("JPEG") && !format.equals("PNG"))
             throw new BadAttributesException("Please check params!");
     }
 
