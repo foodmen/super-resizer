@@ -5,6 +5,8 @@ import static marvinplugins.MarvinPluginCollection.*;
 import marvin.image.MarvinImage;
 import marvin.io.MarvinImageIO;
 import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.builders.BufferedImageBuilder;
+import net.coobird.thumbnailator.resizers.Resizers;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -32,10 +34,14 @@ public class ImageProcessor {
             app.resize.setWidth(image.getWidth());
             app.resize.setHeight(image.getHeight());
         }
-        return (Thumbnails.of(image)
+        BufferedImage bufferedImage = (Thumbnails.of(image)
                 .size(app.resize.getWidth(), app.resize.getHeight())
                 .outputQuality(app.quality / 100)
                 .outputFormat(app.format.toLowerCase(Locale.ROOT))
                 .asBufferedImage());
+
+        BufferedImage destImage = new BufferedImageBuilder(app.resize.getWidth(), app.resize.getHeight()).build();
+        Resizers.BILINEAR.resize(bufferedImage, destImage);
+        return destImage;
     }
 }
