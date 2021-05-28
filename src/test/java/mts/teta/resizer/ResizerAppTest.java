@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ResizerAppTest {
 
-   /* private static final String FILM_COVER_SOURCE_NAME = "Good_Will_Hunting_1997.jpg";
+    private static final String FILM_COVER_SOURCE_NAME = "Good_Will_Hunting_1997.jpg";
     private static final String FILM_COVER_TARGET_NAME = "Good_Will_Hunting_1997.preview.jpg";
     private static final Integer FILM_COVER_HEIGHT = 1500;
     private static final Integer FILM_COVER_WIDTH = 983;
@@ -43,13 +43,13 @@ class ResizerAppTest {
 
         String absolutePathOutput = absolutePathInput.replaceFirst(FILM_COVER_SOURCE_NAME, FILM_COVER_TARGET_NAME);
 
-*//*        ResizerApp app = new ResizerApp();
+        ResizerApp app = new ResizerApp();
         app.setInputFile(new File(absolutePathInput));
         app.setOutputFile(new File(absolutePathOutput));
         app.setResizeWidth(reducedPreviewWidth);
         app.setResizeHeight(reducedPreviewHeight);
         app.setQuality(100);
-        app.call();*//*
+        app.call();
 
         BufferedImage reducedPreview = ImageIO.read(new File(absolutePathOutput));
 
@@ -70,13 +70,13 @@ class ResizerAppTest {
 
         String absolutePathOutput = absolutePathInput.replaceFirst(FILM_COVER_SOURCE_NAME, FILM_COVER_TARGET_NAME);
 
-*//*        ResizerApp app = new ResizerApp();
+        ResizerApp app = new ResizerApp();
         app.setInputFile(new File(absolutePathInput));
         app.setOutputFile(new File(absolutePathOutput));
         app.setResizeWidth(reducedPreviewWidth);
         app.setResizeHeight(reducedPreviewHeight);
         app.setQuality(100);
-        app.call();*//*
+        app.call();
 
         BufferedImage reducedPreview = ImageIO.read(new File(absolutePathOutput));
 
@@ -177,8 +177,8 @@ class ResizerAppTest {
         String absolutePathOutput = absolutePathInput.replaceFirst(AUDIO_COVER_SOURCE_NAME, AUDIO_COVER_TARGET_NAME);
 
         ResizerApp app = new ResizerApp();
-*//*        app.setInputFile(new File(absolutePathInput + typo));
-        app.setOutputFile(new File(absolutePathOutput))*//*;
+        app.setInputFile(new File(absolutePathInput + typo));
+        app.setOutputFile(new File(absolutePathOutput));
         IIOException generatedException = null;
         try {
             app.call();
@@ -199,9 +199,9 @@ class ResizerAppTest {
         String absolutePathOutput = absolutePathInput.replaceFirst(AUDIO_COVER_SOURCE_NAME, AUDIO_COVER_TARGET_NAME);
 
         ResizerApp app = new ResizerApp();
-*//*        app.setInputFile(new File(absolutePathInput));
+        app.setInputFile(new File(absolutePathInput));
         app.setOutputFile(new File(absolutePathOutput));
-        app.setQuality(-50);*//*
+        app.setQuality(-50);
         BadAttributesException generatedException = null;
         try {
             app.call();
@@ -211,5 +211,5 @@ class ResizerAppTest {
 
         assertEquals("Please check params!", generatedException.getMessage());
         assertEquals(BadAttributesException.class, generatedException.getClass());
-    }*/
+    }
 }

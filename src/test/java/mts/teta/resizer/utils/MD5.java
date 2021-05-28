@@ -7,7 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MD5 {
-   /* public static String getMD5(String absolutePathOutput) throws NoSuchAlgorithmException, IOException {
+    public static String getMD5(String absolutePathOutput) throws NoSuchAlgorithmException, IOException {
         File file = new File(absolutePathOutput);
         MessageDigest md5Digest = MessageDigest.getInstance("MD5");
         return getFileChecksum(md5Digest, file);
@@ -30,5 +30,5 @@ public class MD5 {
         }
 
         return sb.toString();
-    }*/
+    }
 }
