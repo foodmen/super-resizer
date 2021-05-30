@@ -72,6 +72,6 @@ public class Crop implements CommandLine.IParameterConsumer {
         int height = Integer.parseInt(args.pop());
         int x = Integer.parseInt(args.pop());
         int y = Integer.parseInt(args.pop());
-        argSpec.setValue(new Crop(x, y, width, height));
+        argSpec.setValue(new Crop(width, height, x, y));
     }
 }

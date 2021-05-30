@@ -14,10 +14,10 @@ import java.io.IOException;
 public class ImageProcessor {
 
     public void processImage(BufferedImage image, ResizerApp app) throws IOException, BadAttributesException {
-        if (app.resize.isResize())
-            image = getResizedImage(image, app);
         if (app.crop.isCrop())
             image = getCropImage(image, app);
+        if (app.resize.isResize())
+            image = getResizedImage(image, app);
         if (app.blur != 0)
             image = getBlurImage(image, app);
         saveImage(image, app);
