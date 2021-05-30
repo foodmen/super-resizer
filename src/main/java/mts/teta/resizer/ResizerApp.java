@@ -5,7 +5,6 @@ import mts.teta.resizer.imageprocessor.ImageProcessor;
 import picocli.CommandLine;
 
 import javax.imageio.ImageIO;
-import java.io.File;
 import java.util.concurrent.Callable;
 
 public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
@@ -24,25 +23,5 @@ public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
         ImageProcessor imageProcessor = new ImageProcessor();
         imageProcessor.processImage(ImageIO.read(inputFile), this);
         return 0;
-    }
-
-    public void setInputFile(File file) {
-        inputFile = file;
-    }
-
-    public void setOutputFile(File file) {
-        outputFile= file;
-    }
-
-    public void setResizeWidth(Integer reducedPreviewWidth) {
-        resize.setWidth(reducedPreviewWidth);
-    }
-
-    public void setResizeHeight(Integer reducedPreviewHeight) {
-        resize.setHeight(reducedPreviewHeight);
-    }
-
-    public void setQuality(int qualityImage) {
-        quality = qualityImage;
     }
 }
