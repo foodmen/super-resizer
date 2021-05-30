@@ -1,7 +1,6 @@
 package mts.teta.resizer.imageprocessor;
 
 import picocli.CommandLine;
-
 import java.util.Stack;
 
 public class Crop implements CommandLine.IParameterConsumer {
