@@ -1,4 +1,4 @@
-package mts.teta.resizer;
+package mts.teta.resizer.imageprocessor;
 
 import picocli.CommandLine;
 

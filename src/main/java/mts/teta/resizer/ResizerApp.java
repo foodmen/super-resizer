@@ -1,11 +1,11 @@
 package mts.teta.resizer;
 
-import mts.teta.resizer.imageprocessor.BadAttributesException;
+import mts.teta.resizer.imageprocessor.ConsoleAttributes;
+import mts.teta.resizer.imageprocessor.ImageProcessor;
 import picocli.CommandLine;
 
 import javax.imageio.ImageIO;
 import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.Callable;
 
 public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
@@ -20,25 +20,10 @@ public class ResizerApp extends ConsoleAttributes implements Callable<Integer> {
     }
 
     @Override
-    public Integer call() throws BadAttributesException, IOException {
+    public Integer call() throws Exception {
         ImageProcessor imageProcessor = new ImageProcessor();
-        parametersValidator();
         imageProcessor.processImage(ImageIO.read(inputFile), this);
         return 0;
-    }
-
-    private void parametersValidator() throws BadAttributesException {
-        if (resize.isResize() && (resize.getHeight() < 1 || resize.getWidth() < 1))
-            throw new BadAttributesException("Please check params!");
-        if (quality < 1 || quality > 100)
-            throw new BadAttributesException("Please check params!");
-        if (crop.isCrop() && (crop.getX() < 0 || crop.getY() < 0 ||
-            crop.getHeight() < 1 || crop.getWidth() < 1))
-            throw new BadAttributesException("Please check params!");
-        if (blur < 0)
-            throw new BadAttributesException("Please check params!");
-        if (!format.equals("JPEG") && !format.equals("PNG"))
-            throw new BadAttributesException("Please check params!");
     }
 
     public void setInputFile(File file) {
