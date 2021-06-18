@@ -3,7 +3,6 @@ package mts.teta.resizer.imageprocessor;
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-
 import java.io.File;
 
 @CommandLine.Command(name = "convert", version = "convert 0.0.1" +
@@ -61,5 +60,9 @@ class ConsoleAttributes{
 
     public void setQuality(int qualityImage) {
         quality = qualityImage;
+    }
+
+    public void setBlurRadius(Integer book_cover_blur_radius) {
+        blur = book_cover_blur_radius;
     }
 }

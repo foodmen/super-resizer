@@ -1,13 +1,11 @@
 package mts.teta.resizer.imageprocessor;
 
 import static marvinplugins.MarvinPluginCollection.*;
-
 import marvin.image.MarvinImage;
 import mts.teta.resizer.ResizerApp;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.builders.BufferedImageBuilder;
 import net.coobird.thumbnailator.resizers.Resizers;
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
